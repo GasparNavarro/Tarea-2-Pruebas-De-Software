@@ -46,24 +46,24 @@ Se implementó **18 pruebas unitarias** que cubren la totalidad de los requerimi
 **Describe brevemente cómo aplicaste el ciclo TDD (Red → Green → Refactor) durante el desarrollo del ejercicio.**
 
 Para el ciclo TDD, la verdad lo fui aplicando súper iterativo, funcionalidad por funcionalidad. Un ejemplo claro fue con el tema del ISBN duplicado:
-1. **Red:** Primero armé el test `testRegistrarLibro_ConIsbnDuplicado_DebeLanzarExcepcion`, registré un libro e intenté meter otro con el mismo ISBN. Obvio falló porque el sistema estaba chateando y simplemente sobrescribía el dato en el `HashMap`.
-2. **Green:** Fui a `Biblioteca.java` y le chanté un `if (catalogo.containsKey(isbn))` súper simple que lanzaba la `LibroDuplicadoException`. Corrí la prueba y pasó a verde.
+1. **Red:** Primero armé el test `testRegistrarLibro_ConIsbnDuplicado_DebeLanzarExcepcion`, registré un libro e intenté meter otro con el mismo ISBN. Obvio falló porque el sistema estaba incompleto y simplemente sobrescribía el dato en el `HashMap`.
+2. **Green:** Fui a `Biblioteca.java` y le puse un `if (catalogo.containsKey(isbn))` súper simple que lanzaba la `LibroDuplicadoException`. Corrí la prueba y pasó a verde.
 3. **Refactor:** Como vi que el método `registrarLibro` me estaba quedando gigante con tanta validación de nulos y vacíos, tiré toda esa lógica a un método privado `validarLibro(Libro libro)`. El código quedó mucho más limpio y como los tests seguían pasando, me quedé tranquilo de que no había roto nada.
 
 ### Pregunta 2
 **¿Qué ventajas y desventajas observaste al desarrollar utilizando TDD en comparación con implementar primero el código y luego las pruebas?**
 
 **Lo bueno (Ventajas):**
-- Te obliga a hacer el código justo y necesario (YAGNI), sin pasarse rollos ni hacer sobre-ingeniería de más.
-- Depurar es casi automático. Como iba metiendo código de a poco, si un test fallaba, cachaba al tiro que el condoro estaba en las tres líneas que acababa de escribir.
+- Te obliga a hacer el código justo y necesario (YAGNI), sin sobrepensar ni hacer sobre-ingeniería de más.
+- Depurar es casi automático. Como iba metiendo código de a poco, si un test fallaba, notaba inmediatamente la falla que estaba en las tres líneas que acababa de escribir.
 
 **Lo malo (Desventajas):**
-- La paja inicial. Configurar el `pom.xml`, armar la estructura de las pruebas y pensar la lógica "al revés" (desde el test) hace que uno parta súper lento comparado con simplemente ponerse a echar código a lo loco.
+- La configuración inicial. Configurar el `pom.xml`, armar la estructura de las pruebas y pensar la lógica "al revés" (desde el test) hace que uno parta súper lento comparado con simplemente ponerse a escribir código a lo loco.
 
 ### Pregunta 3
 **Si tuvieras que desarrollar nuevamente este sistema desde cero, ¿continuarías utilizando TDD? ¿Por qué?**
 
-Sí, de todas maneras, sobre todo aplicando las buenas prácticas de SQA que uno va agarrando en los proyectos de la u. La lata del principio se paga sola cuando el sistema empieza a crecer.
+Sí, de todas maneras, sobre todo aplicando las buenas prácticas de SQA que uno va agarrando en los proyectos. El problema es del principio de aprender luego se ve como una inversión de tiempo necesaria y valiosa cuando el sistema empieza a crecer y funciona correctamente.
 
 Primero, pensar en las pruebas antes te obliga a ponerte en el lugar del que va a usar tus clases, entonces la arquitectura te queda mucho más cohesiva. También, cuando hice la parte del límite de los 3 libros (el opcional), analizar los valores límite en el test me salvó de un típico bug de poner `>` en vez de `>=` antes de mandar todo a producción. 
-Por último, te da ene confianza para refactorizar. Normalmente uno le tiene terror a tocar código que ya funciona, pero al cambiar las búsquedas manuales por Streams de Java, la red de seguridad de los tests me avisaba al segundo si me estaba echando algo.
+Por último, te da confianza para refactorizar. Normalmente uno le tiene terror a tocar código que ya funciona, pero al cambiar las búsquedas manuales por Streams de Java, la red de seguridad de los tests me avisaba al segundo si estaba rompiendo algo o no.
