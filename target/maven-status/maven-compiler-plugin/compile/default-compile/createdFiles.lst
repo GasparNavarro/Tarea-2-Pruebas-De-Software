@@ -1,0 +1,8 @@
+com/biblioteca/Biblioteca.class
+com/biblioteca/excepciones/LibroYaDisponibleException.class
+com/biblioteca/excepciones/LibroDuplicadoException.class
+com/biblioteca/excepciones/LibroNoEncontradoException.class
+com/biblioteca/Usuario.class
+com/biblioteca/Libro.class
+com/biblioteca/excepciones/LibroNoDisponibleException.class
+com/biblioteca/excepciones/UsuarioNoEncontradoException.class
