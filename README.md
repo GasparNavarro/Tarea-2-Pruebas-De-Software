@@ -67,3 +67,12 @@ Sí, de todas maneras, sobre todo aplicando las buenas prácticas de SQA que uno
 
 Primero, pensar en las pruebas antes te obliga a ponerte en el lugar del que va a usar tus clases, entonces la arquitectura te queda mucho más cohesiva. También, cuando hice la parte del límite de los 3 libros (el opcional), analizar los valores límite en el test me salvó de un típico bug de poner `>` en vez de `>=` antes de mandar todo a producción. 
 Por último, te da confianza para refactorizar. Normalmente uno le tiene terror a tocar código que ya funciona, pero al cambiar las búsquedas manuales por Streams de Java, la red de seguridad de los tests me avisaba al segundo si estaba rompiendo algo o no.
+
+---
+
+## Evidencia de Ejecución
+
+A continuación se muestra la evidencia de la ejecución exitosa de los 18 casos de prueba (estado Verde del TDD):
+
+![Evidencia 1](Evidencia-Tarea2-1.png)
+![Evidencia 2](Evidencia-Tarea2-2.png)
